@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:whatsapp/ui/screens/home_screen/home_screen_arguments.dart';
 import 'package:whatsapp/ui/screens/login_screen/login_screen_controller.dart';
 import 'package:whatsapp/ui/screens/login_screen/widgets/login_form/login_form.dart';
 import 'package:whatsapp/ui/screens/login_screen/widgets/register_form/register_form.dart';
@@ -15,13 +19,27 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin{
   final _loginScreenController = Get.put(LoginScreenController());
+
   @override
   void initState() {
     _loginScreenController.tabController = TabController(length: 2, vsync: this);
+    SharedPreferences.getInstance().then((value) async {
+      if(value.get('auto_signin') != null){
+        final Map<String, dynamic> userLogin = jsonDecode(value.get('auto_signin'));
+        _loginScreenController.emailController.text = userLogin['email'];
+        _loginScreenController.passwordController.text = userLogin['password'];
+        await _loginScreenController.login();
+        if(globalUserModel != null)
+          Navigator.pushReplacementNamed(context, AppRoutes.HOME_SCREEN, arguments: HomeScreenArguments(acao: 'login'));
+      }
+    });
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
+    _loginScreenController.tabController.addListener(() {
+      _loginScreenController.cleanValues();
+    });
     return Scaffold(
       backgroundColor: GlobalColors.primaryColor,
       body: SafeArea(
@@ -30,12 +48,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
             SizedBox(height: 60,),
             TabBar(
               controller: _loginScreenController.tabController,
-              onTap: (tab){
-                if(_loginScreenController.currentTab != tab){
-                  _loginScreenController.cleanValues();
-                }
-                _loginScreenController.currentTab = tab;
-              },
+
               tabs: [
                 Tab(child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

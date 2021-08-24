@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:whatsapp/data/models/user_model.dart';
 import 'package:whatsapp/data/repositories/auth_repository.dart';
 import 'package:whatsapp/data/repositories/user_repository.dart';
@@ -10,7 +13,6 @@ class LoginScreenController extends GetxController {
   final UserRepository _userRepository = UserRepository();
 
   TabController tabController;
-  int currentTab = 0;
 
   final loginGlobalKey = GlobalKey<FormState>();
   final registerGlobalKey = GlobalKey<FormState>();
@@ -23,6 +25,11 @@ class LoginScreenController extends GetxController {
     if(loginGlobalKey.currentState.validate()){
       final user = await _authRepository.signInWithEmailAndPassword(emailController.text, passwordController.text);
       globalUserModel = await _userRepository.readUser(user.uid);
+      final SharedPreferences _preferences = await SharedPreferences.getInstance();
+      if(_preferences.get('auto_signin') == null){
+        await _preferences.setString('auto_signin',
+            jsonEncode({'email': emailController.text, 'password': passwordController.text}));
+      }
     }
   }
 

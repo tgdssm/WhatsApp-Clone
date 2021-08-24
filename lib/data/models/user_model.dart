@@ -8,10 +8,10 @@ class UserModel {
 
   UserModel({this.userName, this.email, this.uid});
 
-  UserModel.fromJson(QueryDocumentSnapshot snapshot) {
-    this.userName = snapshot.data()['userName'];
-    this.email = snapshot.data()['email'];
-    this.uid = snapshot.data()['uid'];
+  UserModel.fromJson(Map<String, dynamic> snapshot) {
+    this.userName = snapshot['userName'];
+    this.email = snapshot['email'];
+    this.uid = snapshot['uid'];
   }
 
 

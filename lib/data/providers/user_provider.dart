@@ -16,7 +16,7 @@ class UserProvider {
     UserModel user;
     try {
       QuerySnapshot snapshot = await _collectionReference.where('uid', isEqualTo: uid).get();
-      user = UserModel.fromJson(snapshot.docs.first);
+      user = UserModel.fromJson(snapshot.docs.first.data());
       return user;
     } on FirebaseException catch(e){
       print('Erro ao ler usuario');
