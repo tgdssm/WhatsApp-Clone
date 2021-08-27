@@ -1,4 +1,4 @@
 class HomeScreenArguments {
-  String acao;
+  String? acao;
   HomeScreenArguments({this.acao});
 }

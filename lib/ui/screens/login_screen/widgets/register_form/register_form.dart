@@ -9,7 +9,7 @@ import 'package:whatsapp/utils/app_routes.dart';
 class RegisterForm extends StatelessWidget {
   final _controller = Get.find<LoginScreenController>();
 
-  RegisterForm({Key key}) : super(key: key);
+  RegisterForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -11,7 +11,7 @@ import 'package:whatsapp/utils/app_routes.dart';
 import 'package:whatsapp/utils/globals.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     _loginScreenController.tabController = TabController(length: 2, vsync: this);
     SharedPreferences.getInstance().then((value) async {
       if(value.get('auto_signin') != null){
-        final Map<String, dynamic> userLogin = jsonDecode(value.get('auto_signin'));
+        final Map<String, dynamic> userLogin = jsonDecode(value.get('auto_signin') as String);
         _loginScreenController.emailController.text = userLogin['email'];
         _loginScreenController.passwordController.text = userLogin['password'];
         await _loginScreenController.login();

@@ -10,7 +10,7 @@ import 'package:whatsapp/utils/globals.dart';
 class LoginForm extends StatelessWidget {
   final _controller = Get.find<LoginScreenController>();
 
-  LoginForm({Key key}) : super(key: key);
+  LoginForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

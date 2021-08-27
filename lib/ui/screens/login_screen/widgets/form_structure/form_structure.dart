@@ -6,10 +6,10 @@ class FormStructure extends StatelessWidget {
   final String buttonText;
   final VoidCallback onPressedButton;
   FormStructure({
-    Key key,
-    @required this.widgets,
-    @required this.buttonText,
-    @required this.onPressedButton
+    Key? key,
+    required this.widgets,
+    required this.buttonText,
+    required this.onPressedButton
   }) : super(key: key);
 
   @override

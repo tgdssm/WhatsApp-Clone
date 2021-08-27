@@ -8,7 +8,7 @@ class UserRepository {
     await _userProvider.create(userModel);
   }
 
-  Future<UserModel> readUser(String uid) async {
+  Future<UserModel?> readUser(String uid) async {
     return await _userProvider.read(uid);
   }
 }
