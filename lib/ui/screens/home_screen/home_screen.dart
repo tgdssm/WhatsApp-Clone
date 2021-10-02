@@ -62,13 +62,13 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 tabs: [
                   Tab(icon: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: Icon(CupertinoIcons.camera_fill),
+                    child: Icon(CupertinoIcons.camera_fill, size: 20,),
                   ),),
                   Tab(child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
                       children: [
-                        Text('CONVERSAS', style: TextStyle(color: GlobalColors.textColor, fontWeight: FontWeight.bold, fontSize: 16)),
+                        Text('CONVERSAS', style: TextStyle(color: GlobalColors.textColor, fontWeight: FontWeight.bold, fontSize: 13)),
                         SizedBox(width: 5,),
                         Icon(CupertinoIcons.circle_fill, color: GlobalColors.secundaryColor,)
                       ],
@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
                       children: [
-                        Text('STATUS', style: TextStyle(color: GlobalColors.textColor, fontWeight: FontWeight.bold, fontSize: 16)),
+                        Text('STATUS', style: TextStyle(color: GlobalColors.textColor, fontWeight: FontWeight.bold, fontSize: 13)),
                         SizedBox(width: 5,),
                         Icon(CupertinoIcons.circle_fill, color: GlobalColors.textColor, size: 10,)
                       ],
@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   ),),
                   Tab(child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Text('CHAMADAS', style: TextStyle(color: GlobalColors.textColor, fontWeight: FontWeight.bold, fontSize: 16)),
+                    child: Text('CHAMADAS', style: TextStyle(color: GlobalColors.textColor, fontWeight: FontWeight.bold, fontSize: 13)),
                   ),),
                 ],
               ),

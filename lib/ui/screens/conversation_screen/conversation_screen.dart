@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:whatsapp/ui/screens/conversation_screen/conversation_screen_controller.dart';
 import 'package:whatsapp/utils/globals.dart';
 
 class ConversationScreen extends StatelessWidget {
-  const ConversationScreen({Key? key}) : super(key: key);
+  final _controller = Get.put(ConversationScreenController());
+  ConversationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/data/models/user_model.dart';
+import 'package:whatsapp/data/models/user.dart';
 
 class GlobalColors{
   static const primaryColor = Color(0xff101D25);
@@ -11,4 +11,4 @@ class GlobalColors{
   static const textColor = Color(0xffB0BABD);
 }
 
-UserModel? globalUserModel;
+User? globalUserModel;

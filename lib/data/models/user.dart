@@ -1,12 +1,12 @@
-class UserModel {
+class User {
   late String userName;
   late String email;
   late String uid;
   String? photo;
 
-  UserModel({required this.userName, required this.email, required this.uid});
+  User({required this.userName, required this.email, required this.uid});
 
-  UserModel.fromJson(Map<String, dynamic> snapshot) {
+  User.fromJson(Map<String, dynamic> snapshot) {
     this.userName = snapshot['userName'];
     this.email = snapshot['email'];
     this.uid = snapshot['uid'];

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:whatsapp/data/models/user_model.dart';
+import 'package:whatsapp/data/models/user.dart';
 import 'package:whatsapp/data/repositories/auth_repository.dart';
 import 'package:whatsapp/data/repositories/user_repository.dart';
 import 'package:whatsapp/utils/globals.dart';
@@ -40,7 +40,7 @@ class LoginScreenController extends GetxController {
       final createdUser = await _authRepository.createUserWithEmailAndPassword(emailController.text, passwordController.text);
       if(createdUser != null) {
         await _userRepository.createUser(
-            UserModel(
+            User(
                 userName: this.userNameController.text,
                 email: createdUser.email!,
                 uid: createdUser.uid,

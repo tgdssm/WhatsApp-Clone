@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/ui/screens/home_screen/home_screen.dart';
 import 'package:whatsapp/ui/screens/login_screen/login_screen.dart';
+import 'package:whatsapp/ui/screens/view_status/view_status.dart';
 import 'package:whatsapp/utils/app_routes.dart';
 import 'package:whatsapp/utils/globals.dart';
 
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         AppRoutes.INITIAL: (context) => LoginScreen(),
-        AppRoutes.HOME_SCREEN: (context) => HomeScreen()
+        AppRoutes.HOME_SCREEN: (context) => HomeScreen(),
       },
     );
   }
