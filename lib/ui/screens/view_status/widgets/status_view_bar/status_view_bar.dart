@@ -25,7 +25,7 @@ class _StatusViewBarState extends State<StatusViewBar> {
     widget.animationController.reset();
   }
 
-  void verNovamente() {
+  void seeAgain() {
     widget.animationController.reset();
     widget.animationController.forward();
   }
@@ -41,6 +41,10 @@ class _StatusViewBarState extends State<StatusViewBar> {
   void close() {
     widget.animationController.reset();
     widget.animationController.dispose();
+  }
+
+  bool isCompleted() {
+    return widget.animationController.isCompleted;
   }
 
   @override
@@ -90,7 +94,16 @@ class StatusViewBarHolder {
     this._key.currentState!.init();
   }
 
-  void verNovamente(){
-    this._key.currentState!.verNovamente();
+  void seeAgain(){
+    this._key.currentState!.seeAgain();
   }
+
+  bool isCompleted(){
+    return this._key.currentState!.isCompleted();
+  }
+
+
+
+
+
 }

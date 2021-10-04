@@ -14,28 +14,22 @@ class StatusScreen extends StatelessWidget {
   StatusScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    List<StatusItem> listStatusItem = List.generate(
-        10,
-        (index) => StatusItem(
-            userName: 'Thalisson',
-            time: 'há 14 minutos',
-            data: 'https://cdn.fstatic.com/media/movies/covers/2019/11/mqupeeot6k731_Lj7obag.jpg'));
     return Stack(
       children: [
         ListView.builder(
           padding: EdgeInsets.only(top: 15),
-          itemCount: listStatusItem.length,
+          itemCount: mockStatus.length,
           itemBuilder: (context, index) {
             return ListTile(
               onTap: () {
                 showDialog(
                     context: context,
-                    builder: (context) => ViewStatus(status: listStatusItem),
+                    builder: (context) => ViewStatus(status: mockStatus),
                     barrierDismissible: true,
                 );
               },
               title: Text(
-                listStatusItem[index].userName,
+                mockStatus[index].userName,
                 style: TextStyle(
                     color: GlobalColors.textColor,
                     fontSize: 20,
@@ -43,7 +37,7 @@ class StatusScreen extends StatelessWidget {
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 5),
-                child: Text(listStatusItem[index].time,
+                child: Text(mockStatus.last.time,
                     style: TextStyle(
                         color: GlobalColors.textColor.withOpacity(.8),
                         fontSize: 16)),
@@ -54,7 +48,7 @@ class StatusScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: NetworkImage(listStatusItem[index].data),
+                      image: NetworkImage(mockStatus.last.data),
                       fit: BoxFit.cover),
                 ),
               ),
