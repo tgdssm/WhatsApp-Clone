@@ -60,9 +60,10 @@ class _ViewStatusState extends State<ViewStatus> with TickerProviderStateMixin{
 
   @override
   void dispose() {
-    super.dispose();
     _controller.onClose();
     _controller.goToNextAutomaticStatus.cancel();
+    super.dispose();
+
   }
 
   @override
@@ -88,6 +89,7 @@ class _ViewStatusState extends State<ViewStatus> with TickerProviderStateMixin{
                 if(_indexStatus < _listStatusViewBar.length - 1) {
                   this._skipToTheNext();
                 } else {
+                  _listStatusViewBar[_indexStatus].close();
                   Navigator.pop(context);
                 }
               } else if(details.globalPosition.dx < 55){
@@ -127,7 +129,10 @@ class _ViewStatusState extends State<ViewStatus> with TickerProviderStateMixin{
                                   shape: RoundedRectangleBorder(),
                                   child: IconButton(
                                     icon: Icon(Icons.arrow_back),
-                                    onPressed: () => Navigator.pop(context),
+                                    onPressed: () {
+                                      _listStatusViewBar[_indexStatus].close();
+                                      Navigator.pop(context);
+                                    },
                                   ),
                                 ),
                               ),

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:whatsapp/ui/screens/contacts_screen/contact_controller.dart';
 import 'package:whatsapp/ui/screens/home_screen/home_screen_arguments.dart';
 import 'package:whatsapp/ui/screens/login_screen/login_screen_controller.dart';
 import 'package:whatsapp/ui/screens/login_screen/widgets/login_form/login_form.dart';
@@ -19,6 +20,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin{
   final _loginScreenController = Get.put(LoginScreenController());
+  final _contactScreenController = Get.put(ContactsController());
 
   @override
   void initState() {
@@ -29,7 +31,8 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
         _loginScreenController.emailController.text = userLogin['email'];
         _loginScreenController.passwordController.text = userLogin['password'];
         await _loginScreenController.login();
-        if(globalUserModel != null)
+        await _contactScreenController.getUserList();
+        if(globalCurrentUser != null)
           Navigator.pushReplacementNamed(context, AppRoutes.HOME_SCREEN, arguments: HomeScreenArguments(acao: 'login'));
       }
     });

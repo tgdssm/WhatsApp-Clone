@@ -34,8 +34,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               title: Text('WhatsApp', style: TextStyle(color: GlobalColors.textColor, fontWeight: FontWeight.bold),),
               actions: [
                 IconButton(icon: Icon(CupertinoIcons.search, color: GlobalColors.textColor,), onPressed: (){}),
-                IconButton(icon: Icon(CupertinoIcons.ellipsis_vertical, color: GlobalColors.textColor,), onPressed: (){
-                  showMenu(
+                IconButton(icon: Icon(CupertinoIcons.ellipsis_vertical, color: GlobalColors.textColor,), onPressed: () async {
+                  final value = await showMenu(
                     context: context, position: RelativeRect.fromLTRB(1, 0, 0, 0),
                     items: [
                       PopupMenuItem(child: Text('Novo grupo', style: TextStyle(color: GlobalColors.textColor),)),
@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                     ],
                     color: Color(0xff313C42)
                   );
+                  print(value);
                 }),
               ],
               floating: true,

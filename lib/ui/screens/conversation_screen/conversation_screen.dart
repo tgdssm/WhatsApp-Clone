@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:whatsapp/ui/screens/conversation_screen/conversation_screen_controller.dart';
+import 'package:whatsapp/utils/app_routes.dart';
 import 'package:whatsapp/utils/globals.dart';
 
 class ConversationScreen extends StatelessWidget {
@@ -48,7 +49,9 @@ class ConversationScreen extends StatelessWidget {
             padding: EdgeInsets.all(15),
             color: GlobalColors.secundaryColor,
             shape: CircleBorder(),
-            onPressed: (){},),
+            onPressed: (){
+              Navigator.pushNamed(context, AppRoutes.CONTACTS_SCREEN);
+            },),
         )
       ]
     );

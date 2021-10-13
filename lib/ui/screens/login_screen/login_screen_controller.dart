@@ -25,7 +25,7 @@ class LoginScreenController extends GetxController {
     if(loginGlobalKey.currentState!.validate()){
       final user = await (_authRepository.signInWithEmailAndPassword(emailController.text, passwordController.text));
       if(user != null) {
-        globalUserModel = await _userRepository.readUser(user.uid);
+        globalCurrentUser = await _userRepository.readCurrentUser(user.uid);
         final SharedPreferences _preferences = await SharedPreferences.getInstance();
         if(_preferences.get('auto_signin') == null){
           await _preferences.setString('auto_signin',
@@ -45,7 +45,7 @@ class LoginScreenController extends GetxController {
                 email: createdUser.email!,
                 uid: createdUser.uid,
             ));
-        globalUserModel = await _userRepository.readUser(createdUser.uid);
+        globalCurrentUser = await _userRepository.readCurrentUser(createdUser.uid);
       }
     }
   }

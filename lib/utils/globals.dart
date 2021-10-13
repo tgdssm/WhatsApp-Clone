@@ -9,10 +9,12 @@ class GlobalColors{
   static const chatBackgroudColor = Color(0xffDCF8C6);
   static const singleAndDoubleTickColor = Color(0xffECE5DD);
   static const readTickColor = Color(0xff34B7F1);
-  static const textColor = Color(0xffB0BABD);
+  static const textColor = Color(0xffffffff);
+
+// static const textColor = Color(0xffB0BABD);
 }
 
-User? globalUserModel;
+User? globalCurrentUser;
 
 
 final List<StatusItem> mockStatus = [

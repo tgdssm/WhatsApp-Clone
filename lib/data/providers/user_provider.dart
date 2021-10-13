@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:whatsapp/data/models/user.dart';
+import 'package:whatsapp/utils/globals.dart';
 
 class UserProvider {
   CollectionReference _collectionReference = FirebaseFirestore.instance.collection('Users');
@@ -12,7 +13,7 @@ class UserProvider {
     }
   }
 
-  Future<User?>read(String uid) async{
+  Future<User?>readCurrentUser(String uid) async{
     User user;
     try {
       QuerySnapshot snapshot = await _collectionReference.where('uid', isEqualTo: uid).get();
@@ -21,5 +22,15 @@ class UserProvider {
     } on FirebaseException catch(_){
       print('Erro ao ler usuario');
     }
+  }
+
+  Future<List<User>?> readListOfUsersNotAdded() async{
+    List<User> users = [];
+    QuerySnapshot snapshot = await _collectionReference.where('uid', isNotEqualTo: globalCurrentUser!.uid).get();
+    await Future.forEach(snapshot.docs, (QueryDocumentSnapshot element) {
+      users.add(User.fromJson(element.data() as Map<String, dynamic>));
+    });
+    print(users);
+    return users;
   }
 }
