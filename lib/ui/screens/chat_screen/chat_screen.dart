@@ -132,7 +132,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 return Container(
                   margin: EdgeInsets.symmetric(horizontal: 10,),
                   alignment: index % 2 == 0?Alignment.centerRight:Alignment.centerLeft,
-                  child: Container(width:150,child: Text('Teste Meu whatsapp dsadasdsadasdadsadsadadasdasd', style: TextStyle(color: GlobalColors.textColor, fontSize: 15),)),
+                  child: Container(width:150,child: Text('Teste Meu whatsapp', style: TextStyle(color: GlobalColors.textColor, fontSize: 15),)),
                 );
               },
             )),
