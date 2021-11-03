@@ -38,16 +38,16 @@ class ContactsScreen extends StatelessWidget {
       ),
       body: ListView.builder(
         padding: EdgeInsets.only(top: 15),
-        itemCount: _controller.listOfUsersNotAdded.length,
+        itemCount: globalUsers.length,
         itemBuilder: (context, index) {
           return ListTile(
             onTap: (){
-              Navigator.pushNamed(context, AppRoutes.CHAT_SCREEN, arguments: ChatScreenArguments(contactInformation:  _controller.listOfUsersNotAdded[index]));
+              Navigator.pushNamed(context, AppRoutes.CHAT_SCREEN, arguments: ChatScreenArguments(contactInformation:  globalUsers[index]));
             },
-            title: Text('${_controller.listOfUsersNotAdded[index].userName}', style: TextStyle(color: GlobalColors.textColor, fontSize: 20, fontWeight: FontWeight.bold),),
+            title: Text('${globalUsers[index].userName}', style: TextStyle(color: GlobalColors.textColor, fontSize: 20, fontWeight: FontWeight.bold),),
             subtitle: Padding(
               padding: const EdgeInsets.only(top: 5),
-              child: Text('${_controller.listOfUsersNotAdded[index].message}', style: TextStyle(color: GlobalColors.textColor.withOpacity(.8), fontSize: 16)),
+              child: Text('${globalUsers[index].message}', style: TextStyle(color: GlobalColors.textColor.withOpacity(.8), fontSize: 16)),
             ),
             leading: GestureDetector(
               onTap: (){print('tocando foto');},

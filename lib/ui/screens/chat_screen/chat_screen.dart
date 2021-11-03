@@ -39,12 +39,17 @@ class _ChatScreenState extends State<ChatScreen> {
           icon: Icon(Icons.arrow_back, color: GlobalColors.textColor),
         ),
         actions: [
+          // Chamada de vídeo
           IconButton(
               icon: Icon(Icons.videocam_rounded, color: GlobalColors.textColor),
               onPressed: () {}),
+
+          // Chamada de voz
           IconButton(
               icon: Icon(Icons.call, color: GlobalColors.textColor),
               onPressed: () {}),
+
+          // Configurações
           IconButton(
               icon: Icon(
                 CupertinoIcons.ellipsis_vertical,

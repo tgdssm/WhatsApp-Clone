@@ -21,6 +21,7 @@ class ChatProvider {
     await Future.forEach(mySnapshot.docs, (QueryDocumentSnapshot element){
       messages.add(Chat.fromJson(element.data() as Map<String, dynamic>));
     });
+
     final receiverSnapshots = await _collectionReference
         .where('senderId', isEqualTo: receiverId)
         .where('receiverId', isEqualTo: globalCurrentUser!.uid).get();

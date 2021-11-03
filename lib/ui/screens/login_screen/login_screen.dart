@@ -20,7 +20,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin{
   final _loginScreenController = Get.put(LoginScreenController());
-  final _contactScreenController = Get.put(ContactsController());
 
   @override
   void initState() {
@@ -31,7 +30,6 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
         _loginScreenController.emailController.text = userLogin['email'];
         _loginScreenController.passwordController.text = userLogin['password'];
         await _loginScreenController.login();
-        await _contactScreenController.getUserList();
         if(globalCurrentUser != null)
           Navigator.pushReplacementNamed(context, AppRoutes.HOME_SCREEN, arguments: HomeScreenArguments(acao: 'login'));
       }

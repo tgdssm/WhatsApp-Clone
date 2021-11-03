@@ -15,7 +15,7 @@ class GlobalColors{
 }
 
 User? globalCurrentUser;
-
+List<User> globalUsers = [];
 
 final List<StatusItem> mockStatus = [
   StatusItem(

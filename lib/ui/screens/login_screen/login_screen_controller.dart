@@ -32,6 +32,7 @@ class LoginScreenController extends GetxController {
               jsonEncode({'email': emailController.text, 'password': passwordController.text}));
         }
       }
+      await readAllUsers();
     }
   }
 
@@ -47,7 +48,14 @@ class LoginScreenController extends GetxController {
             ));
         globalCurrentUser = await _userRepository.readCurrentUser(createdUser.uid);
       }
+      await readAllUsers();
     }
+  }
+
+
+  Future<void> readAllUsers() async{
+    List<User>? list = await _userRepository.readListOfUsersNotAdded();
+    list != null?globalUsers.addAll(list):globalUsers = [];
   }
 
   void cleanValues(){

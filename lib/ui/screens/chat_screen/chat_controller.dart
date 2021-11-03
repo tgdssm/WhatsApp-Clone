@@ -28,13 +28,13 @@ class ChatController extends GetxController{
     update(['loading-messages']);
   }
 
-  // void listenMessages({required String receiverId}) {
-  //   readMessages(receiverId: receiverId);
-  //   _chatRepository.listenMessages(receiverId: receiverId).listen((event) {
-  //     event.docChanges.forEach((element) {
-  //       messages.add(Chat.fromJson(element.doc.data() as  Map<String, dynamic>));
-  //     });
-  //   });
-  //   update(['loading-messages']);
-  // }
+  void listenMessages({required String receiverId}) {
+    readMessages(receiverId: receiverId);
+    _chatRepository.listenMessages(receiverId: receiverId).listen((event) {
+      event.docChanges.forEach((element) {
+        messages.add(Chat.fromJson(element.doc.data() as  Map<String, dynamic>));
+      });
+    });
+    update(['loading-messages']);
+  }
 }

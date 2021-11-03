@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:whatsapp/ui/screens/chat_screen/chat_screen_arguments.dart';
 import 'package:whatsapp/ui/screens/conversation_screen/conversation_screen_controller.dart';
 import 'package:whatsapp/utils/app_routes.dart';
 import 'package:whatsapp/utils/globals.dart';
@@ -14,14 +15,16 @@ class ConversationScreen extends StatelessWidget {
       children: [
         ListView.builder(
           padding: EdgeInsets.only(top: 15),
-          itemCount: 10,
+          itemCount: globalUsers.length,
           itemBuilder: (context, index) {
             return ListTile(
-              onTap: (){print('tocando');},
-              title: Text('Thalisson', style: TextStyle(color: GlobalColors.textColor, fontSize: 20, fontWeight: FontWeight.bold),),
+              onTap: (){
+                Navigator.pushNamed(context, AppRoutes.CHAT_SCREEN, arguments: ChatScreenArguments(contactInformation:  globalUsers[index]));
+              },
+              title: Text('${globalUsers[index].userName}', style: TextStyle(color: GlobalColors.textColor, fontSize: 20, fontWeight: FontWeight.bold),),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 5),
-                child: Text('Você bloqueou esse contato', style: TextStyle(color: GlobalColors.textColor.withOpacity(.8), fontSize: 16)),
+                child: Text('Olá amigo', style: TextStyle(color: GlobalColors.textColor.withOpacity(.8), fontSize: 16)),
               ),
               leading: GestureDetector(
                 onTap: (){print('tocando foto');},
